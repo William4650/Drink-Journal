@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,76 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Drink_Journal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Glass" translatesAutoresizingMaskIntoConstraints="NO" id="v5g-Wv-nlC">
+                                <rect key="frame" x="87" y="175" width="240" height="240"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qq6-Go-Gnb">
+                                <rect key="frame" x="87" y="501" width="67" height="22"/>
+                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" image="minus" catalog="system"/>
+                                <connections>
+                                    <action selector="minus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6MF-iL-h0b"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKg-zp-10x">
+                                <rect key="frame" x="196" y="492" width="22" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mpc-UX-rk6">
+                                <rect key="frame" x="260" y="501" width="67" height="22"/>
+                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="plus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hgv-bh-e8m"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cups of Water" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmr-Vk-4Ff">
+                                <rect key="frame" x="104" y="96" width="207" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dKg-zp-10x" firstAttribute="leading" secondItem="Qq6-Go-Gnb" secondAttribute="trailing" constant="42" id="8mK-je-uC6"/>
+                            <constraint firstItem="dKg-zp-10x" firstAttribute="centerY" secondItem="Mpc-UX-rk6" secondAttribute="centerY" id="Iwa-t5-5n5"/>
+                            <constraint firstItem="dKg-zp-10x" firstAttribute="top" secondItem="v5g-Wv-nlC" secondAttribute="bottom" constant="77" id="K7v-0Y-gWB"/>
+                            <constraint firstItem="gmr-Vk-4Ff" firstAttribute="centerX" secondItem="v5g-Wv-nlC" secondAttribute="centerX" id="MLQ-al-ZyX"/>
+                            <constraint firstItem="v5g-Wv-nlC" firstAttribute="trailing" secondItem="Mpc-UX-rk6" secondAttribute="trailing" id="SQV-C7-n5A"/>
+                            <constraint firstItem="v5g-Wv-nlC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SU4-Eh-GiD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dKg-zp-10x" secondAttribute="bottom" constant="329" id="V9y-k1-k7A"/>
+                            <constraint firstItem="gmr-Vk-4Ff" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="52" id="Vlu-A7-vso"/>
+                            <constraint firstItem="v5g-Wv-nlC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="131" id="aNg-od-cbS"/>
+                            <constraint firstItem="v5g-Wv-nlC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="ao3-b2-BIt"/>
+                            <constraint firstItem="Qq6-Go-Gnb" firstAttribute="top" secondItem="v5g-Wv-nlC" secondAttribute="bottom" constant="86" id="h35-A1-mfm"/>
+                            <constraint firstItem="Qq6-Go-Gnb" firstAttribute="baseline" secondItem="Mpc-UX-rk6" secondAttribute="baseline" id="hDm-Py-fGs"/>
+                            <constraint firstItem="Qq6-Go-Gnb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="lFK-b8-iNv"/>
+                            <constraint firstItem="gmr-Vk-4Ff" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="104" id="oMi-5K-ZFa"/>
+                            <constraint firstItem="Mpc-UX-rk6" firstAttribute="leading" secondItem="dKg-zp-10x" secondAttribute="trailing" constant="42" id="wsa-lM-OaJ"/>
+                            <constraint firstItem="v5g-Wv-nlC" firstAttribute="centerX" secondItem="dKg-zp-10x" secondAttribute="centerX" id="yd2-kq-0sY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="amount" destination="dKg-zp-10x" id="tSO-dV-DaG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="127"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Glass" width="238" height="250"/>
+        <image name="minus" catalog="system" width="128" height="24"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+    </resources>
 </document>

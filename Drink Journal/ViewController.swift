@@ -10,9 +10,33 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var cupsDrank: Int = 0
+    
+    @IBAction func minus(_ sender: Any) {
+        
+        cupsDrank -= 1
+        updateAmount()
+        
+    }
+    
+    @IBAction func plus(_ sender: Any) {
+        
+        cupsDrank += 1
+        updateAmount()
+        
+    }
+    
+    @IBOutlet weak var amount: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
+        
+    }
+    
+    func updateAmount() {
+        amount.text = String(describing: cupsDrank)
     }
 
 
