@@ -34,21 +34,35 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let savedCupsDrank = UserDefaults.standard.integer(forKey: "cupsDrank")
-        let previousSaveDate = UserDefaults.standard.object(forKey: "saveDate") as! Date
+        let previousSaveDate = UserDefaults.standard.object(forKey: "saveDate") ?? Date()
         print(cupsDrank, previousSaveDate)
         
         self.cupsDrank = savedCupsDrank
         amount.text = String(cupsDrank)
+        
+        resetDefaults()
         
     }
     
     func updateAmount() {
         amount.text = String(describing: cupsDrank)
         UserDefaults.standard.set(cupsDrank, forKey: "cupsDrank")
-        UserDefaults.standard.set(Date(), forKey: "saveDate")
+        UserDefaults.standard.set(currentDay, forKey: "saveDate")
     }
 
+    func resetDefaults() {
+        
+        let previousSaveDate = UserDefaults.standard.object(forKey: "saveDate") ?? Date()
+        
+        if currentDay != previousSaveDate as! Date {
+            UserDefaults.standard.set(0, forKey: "cupsDrank")
+            UserDefaults.standard.set(currentDay, forKey: "saveDate")
+        }
+        
+    }
+    
 
 }
 
