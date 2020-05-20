@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     var cupsDrank: Int = 0
+    var savedCups: Int?
     var currentDay: Date = Date()
     var savedDay: Date?
     
