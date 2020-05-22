@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     var currentDay: Date = Date()
     var savedDay: Date?
     
+    let dateFromStringFormatter = DateFormatter()
+    
+    
     @IBAction func minus(_ sender: Any) {
         
         cupsDrank -= 1
@@ -35,8 +38,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
+        
         let savedCupsDrank = UserDefaults.standard.integer(forKey: "cupsDrank")
-        let previousSaveDate = UserDefaults.standard.object(forKey: "saveDate") ?? Date()
+        let previousSaveDate = UserDefaults.standard.string(forKey: "saveDate") ?? "2002-01-10"
+        
         print(cupsDrank, previousSaveDate)
         
         self.cupsDrank = savedCupsDrank
@@ -47,18 +52,25 @@ class ViewController: UIViewController {
     }
     
     func updateAmount() {
+        dateFromStringFormatter.dateFormat = "YYYY-MM-dd"
+        let currentDayFormatted = dateFromStringFormatter.string(from: currentDay)
+        
         amount.text = String(describing: cupsDrank)
         UserDefaults.standard.set(cupsDrank, forKey: "cupsDrank")
-        UserDefaults.standard.set(currentDay, forKey: "saveDate")
+        UserDefaults.standard.set(currentDayFormatted, forKey: "saveDate")
     }
 
     func resetDefaults() {
         
-        let previousSaveDate = UserDefaults.standard.object(forKey: "saveDate") ?? Date()
+        let currentDayFormatted = dateFromStringFormatter.string(from: currentDay)
         
-        if currentDay != previousSaveDate as! Date {
+        let previousSaveDate = UserDefaults.standard.string(forKey: "saveDate") ?? "2002-01-10"
+        
+        print(currentDayFormatted, previousSaveDate)
+        
+        if currentDayFormatted != previousSaveDate {
             UserDefaults.standard.set(0, forKey: "cupsDrank")
-            UserDefaults.standard.set(currentDay, forKey: "saveDate")
+            UserDefaults.standard.set(currentDayFormatted, forKey: "saveDate")
         }
         
     }
