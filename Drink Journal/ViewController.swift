@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     var currentDay: Date = Date()
     var savedDay: Date?
     
-    let dateFromStringFormatter = DateFormatter()
+    let stringFromDateFormatter = DateFormatter()
     
     
     @IBAction func minus(_ sender: Any) {
@@ -37,6 +37,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        stringFromDateFormatter.dateFormat = "YYYY-MM-dd"
+
+        
         // If there's a Date object stored to the device then delete it before doing anything else.
         if (UserDefaults.standard.object(forKey: "saveDate") as? Date) != nil {
             UserDefaults.standard.removeObject(forKey: "saveDate")
@@ -46,7 +49,7 @@ class ViewController: UIViewController {
         let savedCupsDrank = UserDefaults.standard.integer(forKey: "cupsDrank")
         let previousSaveDate = UserDefaults.standard.string(forKey: "saveDate") ?? "2002-01-10"
         
-       // print(cupsDrank, previousSaveDate)
+        print(cupsDrank, previousSaveDate)
         
         self.cupsDrank = savedCupsDrank
         amount.text = String(cupsDrank)
@@ -56,24 +59,25 @@ class ViewController: UIViewController {
     }
     
     func updateAmount() {
-        dateFromStringFormatter.dateFormat = "YYYY-MM-dd"
-        let currentDayFormatted = dateFromStringFormatter.string(from: currentDay)
+        let currentDayFormatted = stringFromDateFormatter.string(from: currentDay)
         
         amount.text = String(describing: cupsDrank)
         UserDefaults.standard.set(cupsDrank, forKey: "cupsDrank")
         UserDefaults.standard.set(currentDayFormatted, forKey: "saveDate")
-        //print("SAVED \(currentDayFormatted)")
+        print("SAVED \(currentDayFormatted)")
     }
 
     func resetDefaults() {
         
-        let currentDayFormatted = dateFromStringFormatter.string(from: currentDay)
+        let currentDayFormatted = stringFromDateFormatter.string(from: currentDay)
         
         let previousSaveDate = UserDefaults.standard.string(forKey: "saveDate") ?? "2002-01-10"
-        //print("CUR: \(currentDayFormatted)")
-        //print("PREV: \(previousSaveDate)")
+        print("DATE: \(Date())")
+        print("CUR: \(currentDayFormatted)")
+        print("PREV: \(previousSaveDate)")
         
         if currentDayFormatted != previousSaveDate {
+            print("Resetting")
             UserDefaults.standard.set(0, forKey: "cupsDrank")
             UserDefaults.standard.set(currentDayFormatted, forKey: "saveDate")
         }
