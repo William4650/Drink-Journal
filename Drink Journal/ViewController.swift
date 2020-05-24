@@ -58,6 +58,18 @@ class ViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let savedCupsDrank = UserDefaults.standard.integer(forKey: "cupsDrank")
+        let previousSaveDate = UserDefaults.standard.string(forKey: "saveDate") ?? "2002-01-10"
+        
+        //print(cupsDrank, previousSaveDate)
+        
+        self.cupsDrank = savedCupsDrank
+        amount.text = String(cupsDrank)
+        
+        resetDefaults()
+    }
+    
     func updateAmount() {
         let currentDayFormatted = stringFromDateFormatter.string(from: currentDay)
         
