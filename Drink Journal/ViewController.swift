@@ -56,11 +56,28 @@ class ViewController: UIViewController {
         
         resetDefaults()
         
+        self.cupsDrank = savedCupsDrank
+        amount.text = String(cupsDrank)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(viewDidEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+
+    @objc func viewDidEnterForeground () {
+        print("View Entered Foreground")
+        
+        currentDay = Date()
+        
         resetDefaults()
+        
+        let savedCupsDrank = UserDefaults.standard.integer(forKey: "cupsDrank")
+        let previousSaveDate = UserDefaults.standard.string(forKey: "saveDate") ?? "2002-01-10"
+        
+        self.cupsDrank = savedCupsDrank
+        amount.text = String(cupsDrank)
     }
+    
     
     func updateAmount() {
         let currentDayFormatted = stringFromDateFormatter.string(from: currentDay)
